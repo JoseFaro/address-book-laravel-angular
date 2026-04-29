@@ -1,41 +1,44 @@
-# Capi Contacts App
+# Address Book — Laravel 11 + Angular 18
 
-Aplicación de listado de contactos para agregar, editar, eliminar y ver, permite filtrado a través de un campo de búsqueda.
+Aplicación web de directorio de contactos desarrollada como prueba
+técnica en una ventana de 24 horas. El resultado fue satisfactorio
+y derivó en una oferta de trabajo.
 
-El proyecto está hecho en **Laravel 11** para el backend y **Angular 18** para el frontend.
+## Funcionalidades
 
-## Instrucciones para levantar Laravel
+- Registro y gestión de contactos con datos personales
+- Soporte para múltiples teléfonos y correos por contacto
+  — almacenados en tablas independientes con relación a la entidad principal
+- Selección de teléfono y correo predeterminado visible en tabla principal
+- Tabla con buscador en tiempo real sobre campos clave
+- Arquitectura Full Stack completa — Laravel en backend, Angular en frontend
 
-pasos:
+## Arquitectura
 
-1.- Desde la carpeta raíz, instalar librerías de composer
+    app/
+    ├── Http/Controllers/    # ContactController
+    ├── Models/              # Address, Contact, Email, Phone, User
+    ├── Providers/           # Service Providers
+    ├── Repositories/        # ContactRepository — capa de acceso a datos
+    └── Services/            # ContactService — lógica de negocio
 
--   run: **composer install**
+    resources/angular/src/   # Frontend Angular 18
 
-2.- Crear base de datos y actualizar archivo
+    database/
+    ├── migrations/          # Esquema normalizado con tablas relacionadas
+    ├── factories/
+    └── seeders/
 
--   ajustar datos en archivo .env
--   copiar del archivo **.env.example** y ajustar
+## Stack técnico
 
-3.- Correr migraciones y seeds
+- **Backend:** PHP, Laravel 11
+- **Frontend:** Angular 18, TypeScript, SCSS
+- **Base de datos:** MySQL — esquema normalizado con relaciones
+- **Arquitectura:** Repositories + Services para separación de
+  lógica de negocio y acceso a datos
 
--   run: **php artisan migrate**
--   run: **php artisan db:seed**
+## Contexto
 
-4.- Iniciar servidor de laravel
-
--   run: **php artisan serve**
-
-## Instrucciones para levantar Angular
-
-pasos:
-
-1.- Instalar dependencias
-
--   ir a la carpeta **resources/angular**
--   run: **npm install**
-
-2.- Iniciar aplicación en Angular
-
--   run: **ng serve**
--   abrir pagina: http://localhost:4200
+Prueba técnica con límite de 24 horas. Enfoque en arquitectura
+limpia, separación de responsabilidades y entrega funcional
+dentro del tiempo establecido.
